@@ -1,7 +1,7 @@
 name: '${project.name}'
 version: '${project.version}'
 main: net.danh.diemsinhmenh.Main
-softdepend: [ PlaceholderAPI, MythicMobsHook ]
+softdepend: [ PlaceholderAPI, MythicMobs ]
 authors: [ VoChiDanh ]
 api-version: 1.13
 description: '${project.description}'

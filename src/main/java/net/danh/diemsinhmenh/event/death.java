@@ -53,7 +53,7 @@ public class death implements Listener {
             if (player == null) {
                 return;
             }
-            if (manager.isPluginEnabled("MythicMobsHook")) {
+            if (manager.isPluginEnabled("MythicMobs")) {
                 BukkitAPIHelper mythicMobsAPI = MythicMobs.inst().getAPIHelper();
                 if (mythicMobsAPI.isMythicMob(mob)) {
                     return;
