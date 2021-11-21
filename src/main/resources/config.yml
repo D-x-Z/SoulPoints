@@ -1,24 +1,24 @@
-config-version: 8
-DropRandomItems: true #false to lost all inventory
-language: enUs
+config-version: 9
+language: enUs #you can create own language in lang.yml and change this to your own language
 available-worlds:
   - world
   - world_nether
   - world_the_end
 PVP:
   Enable: true
-  Kill-souls: 1
+  Kill: 1 #Number of souls you get when kill other player
   Chance: 100 #100%
 Mobs:
-  Enable: true
+  Enable: true #You can config all mob (Vanilla/MythicMobs) in mobs.yml...
 ActionBar:
   Enable: true
 General:
-  Maximum-souls: 7
-  Death-souls: 1
-  Daily-souls: 1
-  Souls-regenerate-duration: 60 #60 = 1s
-  Respawn_souls: 3
-  Lose-soul-message-after: 3
-  First_join: 5
-  Minimum_souls: 1
+  Maximum: 7 #Number of maximum souls you can regen
+  Death: 1 #Number of souls you lose when die
+  Daily: 1 #Number of souls you can regen / time
+  Regen-Time: 60 #60 maybe = 60s? i fogot it sorry, try it and see :0
+  Respawn: 3 #Number of souls you can receive when lost all souls and item in inventory
+  Time: 3 #Time to send message when you die
+  Normal: 5 #Number of souls you get when on first join or reset souls
+  Protect-Inventory: 4 #when souls are lower than Protect-Inventory-souls, random items will be deleted when you die
+  Minimum: 0 #Whn souls are less than or equal to Minimum, you will lose all your items when you die

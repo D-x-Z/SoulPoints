@@ -73,7 +73,7 @@ public class Main extends JavaPlugin implements Listener {
                     List<String> w = getConfig().getStringList("available-worlds");
                     if (w.contains(p.getWorld().getName())) {
                         if (!getdata().contains("Lives." + p.getUniqueId())) {
-                            addLives(p, getConfig().getInt("General.First_join"));
+                            addLives(p, getConfig().getInt("General.Normal"));
 
                         }
 
@@ -99,18 +99,18 @@ public class Main extends JavaPlugin implements Listener {
                     int sie = getLives(p);
 
 
-                    if (getConfig().getInt("General.Maximum-souls") <= sie) {
+                    if (getConfig().getInt("General.Maximum") <= sie) {
                         return;
                     }
 
                     List<String> w = getConfig().getStringList("available-worlds");
                     if (w.contains(p.getWorld().getName())) {
-                        addLives(p, getConfig().getInt("General.Daily-souls"));
-                        p.sendMessage(convert(getlang().getString("lang." + getConfig().getString("language") + "." + "Soul-earn-message").replaceAll("%souls%", getConfig().getString("General.Daily-souls"))));
+                        addLives(p, getConfig().getInt("General.Daily"));
+                        p.sendMessage(convert(getlang().getString("lang." + getConfig().getString("language") + "." + "Soul-earn-message").replaceAll("%souls%", getConfig().getString("General.Daily"))));
                     }
                 }
             }
-        }).runTaskTimer(this, (long) (this.getConfig().getInt("General.Souls-regenerate-duration") * 20), (long) (this.getConfig().getInt("General.Souls-regenerate-duration") * 20));
+        }).runTaskTimer(this, (long) (this.getConfig().getInt("General.Regen-Time") * 20), (long) (this.getConfig().getInt("General.Regen-Time") * 20));
     }
 
     @Override
@@ -199,7 +199,7 @@ public class Main extends JavaPlugin implements Listener {
     }
 
     public void resetLives(Player p) {
-        getdata().set("Lives." + p.getUniqueId() + ".life", this.getConfig().getInt("General.First_join"));
+        getdata().set("Lives." + p.getUniqueId() + ".life", this.getConfig().getInt("General.Normal"));
         save();
     }
 

@@ -2,7 +2,8 @@ lang:
   enUs:
        Soul-earn-message: '&d[Souls] &fYou have earned %souls% Soul!'
        Death-message: '&d[Souls] &fYou lost %lost% souls because you dead, You have %souls% Souls Now!'
-       Death-message-inventory: '&4[Souls] &cYou have lost random item because you do not enough souls to keep it!'
+       Random-drop-inventory: '&4[Souls] &cYou lose 1 random item because your soul so low!'
+       Clear-inventory: '&4[Souls] &cYou lost all your items because you ran out of souls!'
        Kill-message: '&d[Souls] &bYou receive %souls% Souls because you killed %player%'
        Reset-message: '&d[Souls] &6You have set the souls of %player% to %souls%'
        Kill-mobs-message: '&d[Souls] &bYou get %souls% souls from killing mobs &f(&e%mob%&f)'
@@ -18,7 +19,8 @@ lang:
   zhCN:
        Soul-earn-message: '&d[Souls] &f你获得了 %souls% 灵魂点数!'
        Death-message: '&d[Souls] &f你失去了 %lost% 点灵魂点数, 现在有 %souls% 灵魂点数剩余!'
-       Death-message-inventory: '&4[Souls] &c缺少足够灵魂点数, 背包内物品已随机掉落!'
+       Random-drop-inventory: '&4[Souls] &c你失去了 1 个随机物品，因为你的灵魂很低!'
+       Clear-inventory: '&4[Souls] &c你失去了所有的物品，因为你的灵魂用完了!'
        Kill-message: '&d[Souls] &b你通过击杀玩家 %player% 获得了 %souls% 灵魂点数'
        Reset-message: '&d[Souls] &6您已将 %player% 的灵魂设置为 %souls%'
        Kill-mobs-message: '&d[Souls] &b你通过杀死怪物获得 %souls% 的灵魂 &f(&e%mob%&f)'
@@ -34,7 +36,8 @@ lang:
   viVN:
     Soul-earn-message: '&d[Souls] &fBạn nhận được %souls% Souls!'
     Death-message: '&d[Souls] &fBạn đã chết và mất %lost% souls, bạn còn %souls% Souls!'
-    Death-message-inventory: '&4[Souls] &cBạn đã bị mất đồ vì mất hết souls!'
+    Random-drop-inventory: '&4[Souls] &cBạn đã bị mất 1 vật phẩm ngẫu nhiên vì số souls của bạn khá thấp!'
+    Clear-inventory: '&4[Souls] &cBạn đã bị mất toàn bộ túi đồ vì bạn đã hết souls!'
     Kill-message: '&d[Souls] &bBạn nhận được %souls% Souls vì bạn giết người chơi %player%'
     Reset-message: '&d[Souls] &6Bạn đã đặt số souls của %player% thành %souls%'
     Kill-mobs-message: '&d[Souls] &bBạn nhận được %souls% Souls từ việc giết mobs &f(&e%mob%&f)'
@@ -55,4 +58,4 @@ Help-admin:
   - "&a/souls remove <player> <amount> &f- &7Remove souls"
   - "&a/souls set <player> <amount> &f- &7Set souls"
   - "&a/souls reload &f- &7Reload Config"
-lang-version: 2
+lang-version: 3
