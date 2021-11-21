@@ -70,10 +70,6 @@ public class Main extends JavaPlugin implements Listener {
 
                 while (var2.hasNext()) {
                     Player p = (Player) var2.next();
-                    if (!p.hasPermission("souls.use")) {
-                        return;
-                    }
-
                     List<String> w = getConfig().getStringList("available-worlds");
                     if (w.contains(p.getWorld().getName())) {
                         if (!getdata().contains("Lives." + p.getUniqueId())) {
@@ -102,10 +98,6 @@ public class Main extends JavaPlugin implements Listener {
                     Player p = (Player) var2.next();
                     int sie = getLives(p);
 
-
-                    if (!p.hasPermission("souls.use")) {
-                        return;
-                    }
 
                     if (getConfig().getInt("General.Maximum-souls") <= sie) {
                         return;
