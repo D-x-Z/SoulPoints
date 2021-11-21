@@ -13,6 +13,7 @@ import net.danh.diemsinhmenh.commands.TabComplete;
 import net.danh.diemsinhmenh.commands.commands;
 import net.danh.diemsinhmenh.event.UpdateChecker;
 import net.danh.diemsinhmenh.event.death;
+import net.danh.diemsinhmenh.hook.MythicMobsHook;
 import net.danh.diemsinhmenh.hook.placeholder;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -35,8 +36,9 @@ public class Main extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         PluginManager manager = getServer().getPluginManager();
-        if (manager.isPluginEnabled("MythicMobs")) {
-            getLogger().log(Level.INFO, "Hooked onto MythicMobs");
+        if (manager.isPluginEnabled("MythicMobsHook")) {
+            getLogger().log(Level.INFO, "Hooked onto MythicMobsHook");
+            manager.registerEvents(new MythicMobsHook(this), this);
         }
 
         if (manager.isPluginEnabled("PlaceholderAPI")) {
