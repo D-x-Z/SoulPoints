@@ -50,9 +50,9 @@ lang:
 Help-player:
   - "&a/souls check <player> &f- &7Check souls of player"
 Help-admin:
-  - "§a/souls check <player> §f- §7Check souls of player"
-  - "§a/souls add <player> <amount> §f- §7Add souls "
-  - "§a/souls remove <player> <amount> §f- §7Remove souls"
-  - "§a/souls set <player> <amount> §f- §7Set souls"
-  - "§a/souls reload §f- §7Reload Config"
+  - "&a/souls check <player> &f- &7Check souls of player"
+  - "&a/souls add <player> <amount> &f- &7Add souls "
+  - "&a/souls remove <player> <amount> &f- &7Remove souls"
+  - "&a/souls set <player> <amount> &f- &7Set souls"
+  - "&a/souls reload &f- &7Reload Config"
 lang-version: 2
