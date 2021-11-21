@@ -106,7 +106,7 @@ public class Main extends JavaPlugin implements Listener {
                     List<String> w = getConfig().getStringList("available-worlds");
                     if (w.contains(p.getWorld().getName())) {
                         addLives(p, getConfig().getInt("General.Daily-souls"));
-                        p.sendMessage(convert(getConfig().getString("lang." + getConfig().getString("language") + "." + "Soul-earn-message").replaceAll("%souls%", getConfig().getString("General.Daily-souls"))));
+                        p.sendMessage(convert(getlang().getString("lang." + getConfig().getString("language") + "." + "Soul-earn-message").replaceAll("%souls%", getConfig().getString("General.Daily-souls"))));
                     }
                 }
             }
