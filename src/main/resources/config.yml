@@ -8,6 +8,7 @@ available-worlds:
 PVP:
   Enable: true
   Kill-souls: 1
+  Chance: 100 #100%
 Mobs:
   Enable: true
 ActionBar:

@@ -95,8 +95,11 @@ public class death implements Listener {
             }
             if (main.getConfig().getBoolean("PVP.Enable")) {
                 if (k instanceof Player) {
-                    main.addLives(k, main.getConfig().getInt("PVP.Kill-souls"));
-                    k.sendMessage(main.convert(main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Kill-message")).replace("%souls%", main.getConfig().getString("PVP.Kill-souls")).replace("%player%", p.getDisplayName()));
+                    double chance = Math.random() * 100.0D;
+                    if (chance <= main.getConfig().getInt("PvP.Chance")) {
+                        main.addLives(k, main.getConfig().getInt("PVP.Kill-souls"));
+                        k.sendMessage(main.convert(main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Kill-message")).replace("%souls%", main.getConfig().getString("PVP.Kill-souls")).replace("%player%", p.getDisplayName()));
+                    }
                 }
             }
             if (main.getLives(p) >= 1) {
