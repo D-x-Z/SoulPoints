@@ -36,8 +36,8 @@ public class Main extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         PluginManager manager = getServer().getPluginManager();
-        if (manager.isPluginEnabled("MythicMobsHook")) {
-            getLogger().log(Level.INFO, "Hooked onto MythicMobsHook");
+        if (manager.isPluginEnabled("MythicMobs")) {
+            getLogger().log(Level.INFO, "Hooked onto MythicMobs");
             manager.registerEvents(new MythicMobsHook(this), this);
         }
 
