@@ -17,6 +17,7 @@ public class TabComplete implements TabCompleter {
             arg.add("set");
             arg.add("add");
             arg.add("remove");
+            arg.add("reset");
             arg.add("reload");
             arg.add("check");
         }
