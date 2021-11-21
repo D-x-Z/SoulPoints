@@ -101,21 +101,19 @@ public class Main extends JavaPlugin implements Listener {
                 while (var2.hasNext()) {
                     Player p = (Player) var2.next();
                     int sie = getLives(p);
-                    if (!p.hasPermission("souls.use")) {
-                        return;
-                    }
 
                     if (getConfig().getInt("General.Maximum-souls") <= sie) {
                         return;
                     }
+                    if (p.hasPermission("souls.use")) {
 
-                    List<String> w = getConfig().getStringList("available-worlds");
-                    if (w.contains(p.getWorld().getName())) {
-                        addLives(p, getConfig().getInt("General.Daily-souls"));
-                        p.sendMessage(getConfig().getString("lang." + getConfig().getString("language") + "." + "Soul-earn-message").replaceAll("%souls%", getConfig().getString("General.Daily-souls")).replaceAll("s", "§"));
+                        List<String> w = getConfig().getStringList("available-worlds");
+                        if (w.contains(p.getWorld().getName())) {
+                            addLives(p, getConfig().getInt("General.Daily-souls"));
+                            p.sendMessage(getConfig().getString("lang." + getConfig().getString("language") + "." + "Soul-earn-message").replaceAll("%souls%", getConfig().getString("General.Daily-souls")).replaceAll("s", "§"));
+                        }
                     }
                 }
-
             }
         }).runTaskTimer(this, (long) (this.getConfig().getInt("General.Souls-regenerate-duration") * 20), (long) (this.getConfig().getInt("General.Souls-regenerate-duration") * 20));
     }
