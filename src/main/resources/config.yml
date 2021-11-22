@@ -1,4 +1,5 @@
-config-version: 9
+config-version: 10
+prefix: "&f[&aSoulPoints&f] &b"
 language: enUs #you can create own language in lang.yml and change this to your own language
 available-worlds:
   - world

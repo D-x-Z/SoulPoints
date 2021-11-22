@@ -31,15 +31,15 @@ public class MythicMobsHook implements Listener {
             if (p == null) {
                 return;
             }
-            int max = main.getmob().getInt("MythicMobsHook.Default.max");
-            int min = main.getmob().getInt("MythicMobsHook.Default.min");
-            int chance = main.getmob().getInt("MythicMobsHook.Default.chance");
+            int max = main.getmob().getInt("MythicMobs.Default.max");
+            int min = main.getmob().getInt("MythicMobs.Default.min");
+            int chance = main.getmob().getInt("MythicMobs.Default.chance");
             Random randomInt = new Random();
             for (String getstring : main.getmob().getConfigurationSection("MythicMobsHook.").getKeys(false)) {
                 if (mobname.equalsIgnoreCase(getstring)) {
-                    max = main.getmob().getInt("MythicMobsHook." + mobname + ".max");
-                    min = main.getmob().getInt("MythicMobsHook." + mobname + ".min");
-                    chance = main.getmob().getInt("MythicMobsHook." + mobname + ".chance");
+                    max = main.getmob().getInt("MythicMobs." + mobname + ".max");
+                    min = main.getmob().getInt("MythicMobs." + mobname + ".min");
+                    chance = main.getmob().getInt("MythicMobs." + mobname + ".chance");
                     break;
                 }
             }
@@ -49,7 +49,7 @@ public class MythicMobsHook implements Listener {
             double chancee = Math.random() * 100.0D;
             if (chancee <= chance) {
                 main.addLives(p, random);
-                p.sendMessage(main.convert(main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Kill-mobs-message").replace("%souls%", Integer.toString(random)).replace("%mob%", mme.getEntity().getName())));
+                p.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Kill-mobs-message").replace("%souls%", Integer.toString(random)).replace("%mob%", mme.getEntity().getName())));
             }
         }
     }

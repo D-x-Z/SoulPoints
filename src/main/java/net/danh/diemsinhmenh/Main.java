@@ -83,7 +83,7 @@ public class Main extends JavaPlugin implements Listener {
                         if (getConfig().getBoolean("ActionBar.Enable")) {
                             p.spigot().sendMessage(
                                     ChatMessageType.ACTION_BAR,
-                                    new TextComponent(convert(getlang().getString("lang." + getConfig().getString("language") + "." + "Soul-message")).replaceAll("%souls%", String.valueOf(getLives(p)))));
+                                    new TextComponent(convert(getConfig().getString("prefix") + getlang().getString("lang." + getConfig().getString("language") + "." + "Soul-message")).replaceAll("%souls%", String.valueOf(getLives(p)))));
                         }
                     }
 
@@ -106,7 +106,7 @@ public class Main extends JavaPlugin implements Listener {
                     List<String> w = getConfig().getStringList("available-worlds");
                     if (w.contains(p.getWorld().getName())) {
                         addLives(p, getConfig().getInt("General.Daily"));
-                        p.sendMessage(convert(getlang().getString("lang." + getConfig().getString("language") + "." + "Soul-earn-message").replaceAll("%souls%", getConfig().getString("General.Daily"))));
+                        p.sendMessage(convert(getConfig().getString("prefix") + getlang().getString("lang." + getConfig().getString("language") + "." + "Soul-earn-message").replaceAll("%souls%", getConfig().getString("General.Daily"))));
                     }
                 }
             }

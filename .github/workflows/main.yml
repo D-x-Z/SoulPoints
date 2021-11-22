@@ -20,7 +20,7 @@ jobs:
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "v1.2.9"
+          automatic_release_tag: "v1.3.x"
           prerelease: false
           title: "Development Build"
           files: |
