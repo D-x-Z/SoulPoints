@@ -6,7 +6,7 @@
 
     <groupId>net.danh</groupId>
     <artifactId>SoulPoints</artifactId>
-    <version>1.2.9.7</version>
+    <version>1.2.9.8</version>
     <packaging>jar</packaging>
 
     <name>SoulPoints</name>
