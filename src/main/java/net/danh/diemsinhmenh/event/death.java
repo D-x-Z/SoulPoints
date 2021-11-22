@@ -89,7 +89,6 @@ public class death implements Listener {
         Player k = p.getKiller();
         List<String> w = main.getConfig().getStringList("available-worlds");
         if (w.contains(p.getWorld().getName())) {
-            main.removeLives(p, main.getConfig().getInt("General.Death"));
             if (!main.getConfig().getBoolean("PVP.Enable")) {
                 return;
             }
@@ -102,66 +101,95 @@ public class death implements Listener {
                     }
                 }
             }
-            if (main.getLives(p) >= 1) {
-                (new BukkitRunnable() {
-                    public void run() {
-                        if (p.isOnline() && p != null) {
-                            p.sendMessage(main.convert(main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Death-message")).replace("%souls%", String.valueOf(main.getLives(p))).replace("%lost%", main.getConfig().getString("General.Death")));
+            if (main.getConfig().getInt("General.Protect-Inventory") > main.getConfig().getInt("General.Minimum")) {
+                if (main.getLives(p) >= main.getConfig().getInt("General.Protect-Inventory")) {
+                    e.setKeepInventory(true);
+                    (new BukkitRunnable() {
+                        public void run() {
+                            if (p.isOnline() && p != null) {
+                                p.sendMessage(main.convert(main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Death-message-inventory")).replaceAll("%souls%", String.valueOf(main.getLives(p))));
+                            }
+
                         }
-
-                    }
-                }).runTaskLater(main, (long) (20 * main.getConfig().getInt("General.Time")));
-            }
-
-            if (main.getLives(p) >= main.getConfig().getInt("General.Protect-Inventory")) {
-                e.setKeepInventory(true);
-                (new BukkitRunnable() {
-                    public void run() {
-                        if (p.isOnline() && p != null) {
-                            p.sendMessage(main.convert(main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Death-message-inventory")).replaceAll("%souls%", String.valueOf(main.getLives(p))));
-                       }
-
-                    }
-                }).runTaskLater(main, (long) (20 * main.getConfig().getInt("General.Time")));
-            }
-            if (main.getLives(p) < main.getConfig().getInt("General.Protect-Inventory") && main.getLives(p) > main.getConfig().getInt("General.Minimum")) {
-                List<Integer> fullSlots = new ArrayList<Integer>();
-                PlayerInventory playerInventory = p.getInventory();
-                for (int i = 0; i <= playerInventory.getSize(); i++) {
-                    if (playerInventory.getItem(i) != null)
-                        fullSlots.add(Integer.valueOf(i));
+                    }).runTaskLater(main, (long) (20 * main.getConfig().getInt("General.Time")));
                 }
-                if (fullSlots.size() == 0)
-                    return;
-                int theSlot = getRandomNumber(0, fullSlots.size());
-                ItemStack itemStack = new ItemStack(playerInventory.getItem(((Integer) fullSlots.get(theSlot)).intValue()));
-                playerInventory.setItem(((Integer) fullSlots.get(theSlot)).intValue(), null);
-
-                (new BukkitRunnable() {
-                    public void run() {
-                        if (p.isOnline() && p != null) {
-                            p.sendMessage(main.convert(main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Death-message-inventory")).replaceAll("%souls%", String.valueOf(main.getLives(p))));
-                            p.sendMessage(main.convert(main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Random-drop-inventory")));
-                        }
-
+                if (main.getLives(p) < main.getConfig().getInt("General.Protect-Inventory") && main.getLives(p) > main.getConfig().getInt("General.Minimum")) {
+                    List<Integer> fullSlots = new ArrayList<Integer>();
+                    PlayerInventory playerInventory = p.getInventory();
+                    for (int i = 0; i <= playerInventory.getSize(); i++) {
+                        if (playerInventory.getItem(i) != null)
+                            fullSlots.add(Integer.valueOf(i));
                     }
-                }).runTaskLater(main, (long) (20 * main.getConfig().getInt("General.Time")));
+                    if (fullSlots.size() == 0)
+                        return;
+                    int theSlot = getRandomNumber(0, fullSlots.size());
+                    ItemStack itemStack = new ItemStack(playerInventory.getItem(((Integer) fullSlots.get(theSlot)).intValue()));
+                    playerInventory.setItem(((Integer) fullSlots.get(theSlot)).intValue(), null);
+
+                    (new BukkitRunnable() {
+                        public void run() {
+                            if (p.isOnline() && p != null) {
+                                p.sendMessage(main.convert(main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Death-message-inventory")).replaceAll("%souls%", String.valueOf(main.getLives(p))));
+                                p.sendMessage(main.convert(main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Random-drop-inventory")));
+                            }
+
+                        }
+                    }).runTaskLater(main, (long) (20 * main.getConfig().getInt("General.Time")));
+                }
+
+
+                if (main.getLives(p) < main.getConfig().getInt("General.Protect-Inventory") && main.getLives(p) <= main.getConfig().getInt("General.Minimum")) {
+                    main.addLives(p, main.getConfig().getInt("General.Respawn"));
+                    p.getInventory().clear();
+                    (new BukkitRunnable() {
+                        public void run() {
+                            if (p.isOnline() && p != null) {
+                                p.sendMessage(main.convert(main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Death-message-inventory")).replaceAll("%souls%", String.valueOf(main.getLives(p))));
+                                p.sendMessage(main.convert(main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Clear-inventory")));
+                            }
+
+                        }
+                    }).runTaskLater(main, (long) (20 * main.getConfig().getInt("General.Time")));
+                }
+            }
+            if (main.getConfig().getInt("General.Protect-Inventory") <= main.getConfig().getInt("General.Minimum")) {
+                if (main.getLives(p) > main.getConfig().getInt("General.Minimum")) {
+                    e.setKeepInventory(true);
+                    (new BukkitRunnable() {
+                        public void run() {
+                            if (p.isOnline() && p != null) {
+                                p.sendMessage(main.convert(main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Death-message-inventory")).replaceAll("%souls%", String.valueOf(main.getLives(p))));
+                            }
+
+                        }
+                    }).runTaskLater(main, (long) (20 * main.getConfig().getInt("General.Time")));
+                }
+                if (main.getLives(p) <= main.getConfig().getInt("General.Minimum")) {
+                    List<Integer> fullSlots = new ArrayList<Integer>();
+                    PlayerInventory playerInventory = p.getInventory();
+                    for (int i = 0; i <= playerInventory.getSize(); i++) {
+                        if (playerInventory.getItem(i) != null)
+                            fullSlots.add(Integer.valueOf(i));
+                    }
+                    if (fullSlots.size() == 0)
+                        return;
+                    int theSlot = getRandomNumber(0, fullSlots.size());
+                    ItemStack itemStack = new ItemStack(playerInventory.getItem(((Integer) fullSlots.get(theSlot)).intValue()));
+                    playerInventory.setItem(((Integer) fullSlots.get(theSlot)).intValue(), null);
+
+                    (new BukkitRunnable() {
+                        public void run() {
+                            if (p.isOnline() && p != null) {
+                                p.sendMessage(main.convert(main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Death-message-inventory")).replaceAll("%souls%", String.valueOf(main.getLives(p))));
+                                p.sendMessage(main.convert(main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Random-drop-inventory")));
+                            }
+
+                        }
+                    }).runTaskLater(main, (long) (20 * main.getConfig().getInt("General.Time")));
+                }
             }
 
-
-            if (main.getLives(p) < main.getConfig().getInt("General.Protect-Inventory") && main.getLives(p) <= main.getConfig().getInt("General.Minimum")) {
-                main.addLives(p, main.getConfig().getInt("General.Respawn"));
-                p.getInventory().clear();
-                (new BukkitRunnable() {
-                    public void run() {
-                        if (p.isOnline() && p != null) {
-                            p.sendMessage(main.convert(main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Death-message-inventory")).replaceAll("%souls%", String.valueOf(main.getLives(p))));
-                            p.sendMessage(main.convert(main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Clear-inventory")));
-                        }
-
-                    }
-                }).runTaskLater(main, (long) (20 * main.getConfig().getInt("General.Time")));
-            }
+            main.removeLives(p, main.getConfig().getInt("General.Death"));
         }
 
     }
