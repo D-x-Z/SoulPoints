@@ -14,12 +14,14 @@ public class TabComplete implements TabCompleter {
 
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
         if (arg.isEmpty()) {
-            arg.add("set");
-            arg.add("add");
-            arg.add("remove");
-            arg.add("reset");
-            arg.add("reload");
-            arg.add("check");
+                arg.add("check");
+            if(sender.hasPermission("souls.admin")) {
+                arg.add("set");
+                arg.add("add");
+                arg.add("remove");
+                arg.add("reset");
+                arg.add("reload");
+            }
         }
         List<String> result = new ArrayList<String>();
         if (args.length == 1){
