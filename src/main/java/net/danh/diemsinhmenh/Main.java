@@ -48,7 +48,7 @@ public class Main extends JavaPlugin implements Listener {
         Metrics metrics = new Metrics(this, 12918);
         getCommand("souls").setExecutor(new commands(this));
         getCommand("souls").setTabCompleter(new TabComplete());
-        getServer().getPluginManager().registerEvents(new death(this), this);
+        manager.registerEvents(new death(this), this);
         createConfigs();
         if (getConfig().getInt("config-version") != 10) {
             getLogger().severe("Outdated config! Please backup & update config.yml file and restart server again!!");
@@ -67,7 +67,6 @@ public class Main extends JavaPlugin implements Listener {
         (new BukkitRunnable() {
             public void run() {
                 Iterator var2 = Bukkit.getOnlinePlayers().iterator();
-
                 while (var2.hasNext()) {
                     Player p = (Player) var2.next();
                     List<String> w = getConfig().getStringList("available-worlds");
@@ -83,7 +82,7 @@ public class Main extends JavaPlugin implements Listener {
                         if (getConfig().getBoolean("ActionBar.Enable")) {
                             p.spigot().sendMessage(
                                     ChatMessageType.ACTION_BAR,
-                                    new TextComponent(convert(getConfig().getString("prefix") + getlang().getString("lang." + getConfig().getString("language") + "." + "Soul-message")).replaceAll("%souls%", String.valueOf(getLives(p)))));
+                                    new TextComponent(convert(getlang().getString("lang." + getConfig().getString("language") + "." + "Soul-message")).replaceAll("%souls%", String.valueOf(getLives(p)))));
                         }
                     }
 
