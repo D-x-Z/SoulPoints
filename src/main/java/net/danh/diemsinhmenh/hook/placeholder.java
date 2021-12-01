@@ -7,15 +7,15 @@ import org.bukkit.entity.Player;
 
 public class placeholder extends PlaceholderExpansion {
 
-    private final Main plugin;
+    private final Main main;
 
-    public placeholder(Main plugin) {
-        this.plugin = plugin;
+    public placeholder(Main main) {
+        this.main = main;
     }
 
     @Override
     public String getAuthor() {
-        return plugin.getDescription().getAuthors().toString();
+        return main.getDescription().getAuthors().toString();
     }
 
     @Override
@@ -25,7 +25,7 @@ public class placeholder extends PlaceholderExpansion {
 
     @Override
     public String getVersion() {
-        return plugin.getDescription().getVersion();
+        return main.getDescription().getVersion();
     }
 
 
@@ -41,7 +41,7 @@ public class placeholder extends PlaceholderExpansion {
 
         switch (identifier) {
             case "live":
-                return String.valueOf(plugin.getLives(p));
+                return String.valueOf(main.getLives(p));
         }
 
         return null;

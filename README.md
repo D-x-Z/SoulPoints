@@ -2,7 +2,7 @@
 ![commit](https://img.shields.io/github/last-commit/VoChiDanh/SoulPoints?label=Last%20DevBuild%20Update)
 ![issues](https://img.shields.io/github/issues/VoChiDanh/SoulPoints?label=Issues)
 ![workflow](https://img.shields.io/github/workflow/status/VoChiDanh/SoulPoints/Build%20&%20Upload?label=DevBuild) 
-![supportversion](https://img.shields.io/static/v1?label=Support%20Version&message=Minecraft%201.12.x%20-%201.18.x&color=green)<br>
+![supportversion](https://img.shields.io/static/v1?label=Support%20Version&message=Minecraft%201.12.x%20-%201.18.x&color=green) <br>
 ![version](https://img.shields.io/spiget/version/96396?label=SpigotMC%20Version)
 ![sdownload](https://img.shields.io/spiget/downloads/96396?color=success&label=SpigotMC%20Downloads)
 ![devversion](https://img.shields.io/github/release/VoChiDanh/SoulPoints.svg?label=DevBuild%20Version)
