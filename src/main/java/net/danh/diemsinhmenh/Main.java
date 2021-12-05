@@ -9,6 +9,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 
+import io.lumine.xikage.mythicmobs.MythicMobs;
+import io.lumine.xikage.mythicmobs.skills.placeholders.Placeholder;
+import me.clip.placeholderapi.PlaceholderAPI;
+import me.clip.placeholderapi.PlaceholderAPIPlugin;
 import net.danh.diemsinhmenh.commands.TabComplete;
 import net.danh.diemsinhmenh.commands.commands;
 import net.danh.diemsinhmenh.event.UpdateChecker;
@@ -51,11 +55,12 @@ public class Main extends JavaPlugin implements Listener {
         manager.registerEvents(new death(this), this);
         createConfigs();
         if (getConfig().getInt("config-version") != 10) {
-            getLogger().severe("Outdated config! Please backup & update config.yml file and restart server again!!");
+            getLogger().warning("Outdated config! Please backup & update config.yml file and restart server again!!");
         }
         if (getlang().getInt("lang-version") != 4) {
-            getLogger().severe("Outdated lang! Please backup & update lang.yml file and restart server again!!");
+            getLogger().warning("Outdated lang! Please backup & update lang.yml file and restart server again!!");
         }
+
         new UpdateChecker(this, 96396).getVersion(version -> {
             if (this.getDescription().getVersion().equals(version)) {
                 getLogger().info(ChatColor.GREEN + "There is not a new update available.");
