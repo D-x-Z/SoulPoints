@@ -22,6 +22,7 @@ import net.danh.diemsinhmenh.hook.placeholder;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bstats.bukkit.Metrics;
+import org.bstats.charts.SimplePie;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.TabCompleter;
@@ -39,17 +40,20 @@ public class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
+        Metrics metrics = new Metrics(this, 12918);
         PluginManager manager = getServer().getPluginManager();
         if (manager.isPluginEnabled("MythicMobs")) {
-            getLogger().log(Level.INFO, "Hooked onto MythicMobs");
+            getLogger().log(Level.INFO, "Hooked onto MythicMobs v" + MythicMobs.inst().getVersion());
             manager.registerEvents(new MythicMobsHook(this), this);
+            metrics.addCustomChart(new SimplePie("mythicmobs_version", () -> {
+                return MythicMobs.inst().getVersion();
+            }));
         }
 
         if (manager.isPluginEnabled("PlaceholderAPI")) {
             new placeholder(this).register();
             getLogger().log(Level.INFO, "Hooked onto PlaceholderAPI");
         }
-        Metrics metrics = new Metrics(this, 12918);
         getCommand("souls").setExecutor(new commands(this));
         getCommand("souls").setTabCompleter(new TabComplete());
         manager.registerEvents(new death(this), this);
