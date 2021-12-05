@@ -10,9 +10,6 @@ import java.util.List;
 import java.util.logging.Level;
 
 import io.lumine.xikage.mythicmobs.MythicMobs;
-import io.lumine.xikage.mythicmobs.skills.placeholders.Placeholder;
-import me.clip.placeholderapi.PlaceholderAPI;
-import me.clip.placeholderapi.PlaceholderAPIPlugin;
 import net.danh.diemsinhmenh.commands.TabComplete;
 import net.danh.diemsinhmenh.commands.commands;
 import net.danh.diemsinhmenh.event.UpdateChecker;
