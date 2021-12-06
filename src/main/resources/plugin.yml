@@ -1,9 +1,10 @@
-name: '${project.name}'
-version: '${project.version}'
+name: ${project.name}
+version: ${project.version}
 main: net.danh.diemsinhmenh.Main
 softdepend: [ PlaceholderAPI, MythicMobs ]
 load: POSTWORLD
 authors: [ VoChiDanh ]
+website: https://github.com/VoChiDanh/SoulPoints/wiki
 api-version: 1.13
 description: '${project.description}'
 commands:
