@@ -5,7 +5,7 @@
 ![supportversion](https://img.shields.io/static/v1?label=Support%20Version&message=Minecraft%201.12.x%20-%201.18.x&color=green) <br>
 ![version](https://img.shields.io/spiget/version/96396?label=SpigotMC%20Version)
 ![sdownload](https://img.shields.io/spiget/downloads/96396?color=success&label=SpigotMC%20Downloads)
-![devversion](https://img.shields.io/static/v1?label=DevBuild%20Version&message=v1.3.3-SNAPSHOT&color=blue)
+![devversion](https://img.shields.io/static/v1?label=DevBuild%20Version&message=v1.3.3&color=blue)
 ![ddownload](https://img.shields.io/github/downloads/VoChiDanh/SoulPoints/total?color=success&label=DevBuild%20Download)
 # Information
 Want a soul point plugin? Here is a simple plugin for you!

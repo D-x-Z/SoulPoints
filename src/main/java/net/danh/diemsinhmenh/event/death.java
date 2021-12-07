@@ -60,6 +60,16 @@ public class death implements Listener {
                     return;
                 }
             }
+            if (mob instanceof Animals){
+                if (!main.getConfig().getBoolean("Mobs.Animals")){
+                    return;
+                }
+            }
+            if (mob instanceof Monster) {
+                if (!main.getConfig().getBoolean("Mobs.Monster")) {
+                    return;
+                }
+            }
             Random randomInt = new Random();
             int max = main.getmob().getInt("Vanilla.Default.max");
             int min = main.getmob().getInt("Vanilla.Default.min");
