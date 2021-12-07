@@ -74,6 +74,13 @@ public class death implements Listener {
             int max = main.getmob().getInt("Vanilla.Default.max");
             int min = main.getmob().getInt("Vanilla.Default.min");
             int chance = main.getmob().getInt("Vanilla.Default.chance");
+            if (max == 0){
+                if (min == 0){
+                    if (chance == 0){
+                        return;
+                    }
+                }
+            }
             for (String getEntityType : main.getmob().getConfigurationSection("Vanilla.").getKeys(false)) {
                 if (vanillamobs.equalsIgnoreCase(getEntityType)) {
                     max = main.getmob().getInt("Vanilla." + vanillamobs + ".max");

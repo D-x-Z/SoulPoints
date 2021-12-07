@@ -34,6 +34,13 @@ public class MythicMobsHook implements Listener {
             int max = main.getmob().getInt("MythicMobs.Default.max");
             int min = main.getmob().getInt("MythicMobs.Default.min");
             int chance = main.getmob().getInt("MythicMobs.Default.chance");
+            if (max == 0){
+                if (min == 0){
+                    if (chance == 0){
+                        return;
+                    }
+                }
+            }
             Random randomInt = new Random();
             for (String getstring : main.getmob().getConfigurationSection("MythicMobs.").getKeys(false)) {
                 if (mobname.equalsIgnoreCase(getstring)) {
