@@ -55,7 +55,7 @@ public class Main extends JavaPlugin implements Listener {
         getCommand("souls").setTabCompleter(new TabComplete());
         manager.registerEvents(new death(this), this);
         createConfigs();
-        if (getConfig().getInt("config-version") != 10) {
+        if (getConfig().getInt("config-version") != 11) {
             getLogger().warning("Outdated config! Please backup & update config.yml file and restart server again!!");
         }
         if (getlang().getInt("lang-version") != 4) {
