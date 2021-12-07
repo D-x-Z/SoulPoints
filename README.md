@@ -17,4 +17,4 @@ Every time you die with souls, you will not lose items and if you run out of sou
 **[SpigotMC Download](https://www.spigotmc.org/resources/soulpoints.96396/)** <br> 
 **[DevBuild Download](https://github.com/VoChiDanh/SoulPoints/releases/download/v1.3.x/SoulPoints.jar)**
 
-###[Click to go to Wiki](https://github.com/VoChiDanh/SoulPoints/wiki)
+### [Wiki](https://github.com/VoChiDanh/SoulPoints/wiki)
