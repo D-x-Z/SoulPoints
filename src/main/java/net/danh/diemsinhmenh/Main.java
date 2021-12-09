@@ -130,12 +130,12 @@ public class Main extends JavaPlugin implements Listener {
 
     public void createConfigs() {
         configFile = new File(getDataFolder(), "config.yml");
-        langFile = new File(getDataFolder(), "lang.yml");
+        langFile = new File(getDataFolder(), "message.yml");
         dataFile = new File(getDataFolder(), "data.yml");
         mobFile = new File(getDataFolder(), "mobs.yml");
 
         if (!configFile.exists()) saveResource("config.yml", false);
-        if (!langFile.exists()) saveResource("lang.yml", false);
+        if (!langFile.exists()) saveResource("message.yml", false);
         if (!dataFile.exists()) saveResource("data.yml", false);
         if (!mobFile.exists()) saveResource("mobs.yml", false);
 
