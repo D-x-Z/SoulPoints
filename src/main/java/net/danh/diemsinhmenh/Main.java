@@ -64,10 +64,10 @@ public class Main extends JavaPlugin implements Listener {
 
         new UpdateChecker(this, 96396).getVersion(version -> {
             if (this.getDescription().getVersion().equals(version)) {
-                getLogger().info(ChatColor.GREEN + "There is not a new update available.");
+                getLogger().info("There is not a new update available.");
             } else {
-                getLogger().info(ChatColor.RED + "There is a new update available.");
-                getLogger().info(ChatColor.YELLOW + "Download: " + ChatColor.BLUE + "https://www.spigotmc.org/resources/96396/");
+                getLogger().info("There is a new update available.");
+                getLogger().info("Download: https://www.spigotmc.org/resources/96396/");
             }
         });
         (new BukkitRunnable() {
