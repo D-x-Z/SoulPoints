@@ -24,4 +24,13 @@ General:
   Time: 3 #Time to send message when you die
   Normal: 5 #Number of souls you get when on first join or reset souls
   Protect-Inventory: 4 #when souls are lower than Protect-Inventory-souls, random items will be deleted when you die
-  Minimum: 0 #Whn souls are less than or equal to Minimum, you will lose all your items when you die
+  Minimum: 0 #When souls are less than or equal to Minimum, you will lose all your items when you die
+  #Want lose all inventory when die?
+  #If the protect inventory is less than the minimum, then when you die
+  #with a number of souls greater than the minimum, you will be able to keep
+  #the item in the inventory and if it is less than or equal to it, you will randomly drop an item.
+  #If the protect inventory is greater than the minimum, when you die,
+  #your souls greater than or equal to the protect inventory will be kept in the inventory,
+  #if your number of souls is less than the protect inventory and greater than the minimum,
+  #1 item will be dropped. randomly in the inventory, and if it is less than the protect inventory
+  #and less than or equal to the minimum, your inventory will be wiped clean.
