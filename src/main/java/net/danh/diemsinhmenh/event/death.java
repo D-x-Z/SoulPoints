@@ -125,7 +125,7 @@ public class death implements Listener {
                     (new BukkitRunnable() {
                         public void run() {
                             if (p.isOnline() && p != null) {
-                                p.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Death-message")).replaceAll("%souls%", String.valueOf(main.getLives(p))).replaceAll("%lost", String.valueOf(String.valueOf(main.getConfig().getInt("General.Death")))));
+                                p.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Death-message")).replaceAll("%souls%", String.valueOf(main.getLives(p))).replaceAll("%lost%", String.valueOf(String.valueOf(main.getConfig().getInt("General.Death")))));
                             }
 
                         }
@@ -147,7 +147,7 @@ public class death implements Listener {
                     (new BukkitRunnable() {
                         public void run() {
                             if (p.isOnline() && p != null) {
-                                p.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Death-message")).replaceAll("%souls%", String.valueOf(main.getLives(p))).replaceAll("%lost", String.valueOf(main.getConfig().getInt("General.Death"))));
+                                p.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Death-message")).replaceAll("%souls%", String.valueOf(main.getLives(p))).replaceAll("%lost%", String.valueOf(main.getConfig().getInt("General.Death"))));
                                 p.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Random-drop-inventory")));
                             }
 
@@ -162,7 +162,7 @@ public class death implements Listener {
                     (new BukkitRunnable() {
                         public void run() {
                             if (p.isOnline() && p != null) {
-                                p.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Death-message")).replaceAll("%souls%", String.valueOf(main.getLives(p))).replaceAll("%lost", String.valueOf(main.getConfig().getInt("General.Death"))));
+                                p.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Death-message")).replaceAll("%souls%", String.valueOf(main.getLives(p))).replaceAll("%lost%", String.valueOf(main.getConfig().getInt("General.Death"))));
                                 p.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Clear-inventory")));
                             }
 
@@ -176,7 +176,7 @@ public class death implements Listener {
                     (new BukkitRunnable() {
                         public void run() {
                             if (p.isOnline() && p != null) {
-                                p.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Death-message")).replaceAll("%souls%", String.valueOf(main.getLives(p))).replaceAll("%lost", String.valueOf(main.getConfig().getInt("General.Death"))));
+                                p.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Death-message")).replaceAll("%souls%", String.valueOf(main.getLives(p))).replaceAll("%lost%", String.valueOf(main.getConfig().getInt("General.Death"))));
                             }
 
                         }
@@ -198,7 +198,7 @@ public class death implements Listener {
                     (new BukkitRunnable() {
                         public void run() {
                             if (p.isOnline() && p != null) {
-                                p.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Death-message")).replaceAll("%souls%", String.valueOf(main.getLives(p))).replaceAll("%lost", String.valueOf(main.getConfig().getInt("General.Death"))));
+                                p.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Death-message")).replaceAll("%souls%", String.valueOf(main.getLives(p))).replaceAll("%lost%", String.valueOf(main.getConfig().getInt("General.Death"))));
                                 p.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Random-drop-inventory")));
                             }
 
