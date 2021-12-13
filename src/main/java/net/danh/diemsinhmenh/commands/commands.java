@@ -2,6 +2,7 @@ package net.danh.diemsinhmenh.commands;
 
 import net.danh.diemsinhmenh.Main;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -37,25 +38,48 @@ public class commands implements CommandExecutor  {
                 }
             }
 
-            if (args.length == 1 && args[0].equalsIgnoreCase("reload")) {
-                if (!sender.hasPermission("souls.admin")) {
-                    sender.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Perm")));
+            if (args.length == 1) {
+                if (args[0].equalsIgnoreCase("reload")) {
+                    if (!sender.hasPermission("souls.admin")) {
+                        sender.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Perm")));
+                    }
+
+                    if (sender.hasPermission("souls.admin")) {
+                        main.reloadConfigs();
+                        sender.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Reload")));
+                    }
                 }
 
-                if (sender.hasPermission("souls.admin")) {
-                    main.reloadConfigs();
-                    sender.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Reload")));
+                if (args[0].equalsIgnoreCase("updatefile")) {
+
+                    if (!sender.hasPermission("souls.admin")) {
+                        return true;
+                    }
+                    if (sender.hasPermission("souls.admin")) {
+                        if (main.getConfig().getDouble("config-version") == 11 && main.getlang().getDouble("lang-version") == 4) {
+                            main.getConfig().set("config-version", 1.1);
+                            main.getlang().set("lang-version", 0.4);
+                            main.saveconfigs();
+                            main.reloadConfigs();
+                            sender.sendMessage(ChatColor.GREEN + "Updated!");
+                        } else {
+
+                            sender.sendMessage(ChatColor.YELLOW + "Your file is too old or has been updated and upgraded");
+                        }
+                    }
                 }
             }
 
 
-            if (args.length == 2 && args[0].equalsIgnoreCase("check")) {
-                if (Bukkit.getPlayer(args[1]) == null) {
-                    sender.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Not-online")));
-                    return true;
-                }
+            if (args.length == 2) {
+                if (args[0].equalsIgnoreCase("check")) {
+                    if (Bukkit.getPlayer(args[1]) == null) {
+                        sender.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Not-online")));
+                        return true;
+                    }
 
-                sender.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Check-message")).replaceAll("%souls%", String.valueOf(main.getLives(Bukkit.getPlayer(args[1])))).replaceAll("%player%", Bukkit.getPlayer(args[1]).getName()));
+                    sender.sendMessage(main.convert(main.getConfig().getString("prefix") + main.getlang().getString("lang." + main.getConfig().getString("language") + "." + "Check-message")).replaceAll("%souls%", String.valueOf(main.getLives(Bukkit.getPlayer(args[1])))).replaceAll("%player%", Bukkit.getPlayer(args[1]).getName()));
+                }
             }
 
             if (args.length == 3) {

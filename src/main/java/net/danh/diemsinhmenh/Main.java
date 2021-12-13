@@ -40,8 +40,16 @@ public class Main extends JavaPlugin implements Listener {
         Metrics metrics = new Metrics(this, 12918);
         PluginManager manager = getServer().getPluginManager();
         if (manager.isPluginEnabled("MythicMobs")) {
-            getLogger().log(Level.INFO, "Hooked onto MythicMobs v" + MythicMobs.inst().getVersion());
-            manager.registerEvents(new MythicMobsHook(this), this);
+            if(MythicMobs.inst().getVersion().contains("5.0.0")
+                    || MythicMobs.inst().getVersion().contains("4.13.1")
+                    || MythicMobs.inst().getVersion().contains("4.13.0")
+                    || MythicMobs.inst().getVersion().contains("4.12.0")
+                    || MythicMobs.inst().getVersion().contains("4.11.0")){
+                manager.registerEvents(new MythicMobsHook(this), this);
+                getLogger().log(Level.INFO, "Hooked onto MythicMobs v" + MythicMobs.inst().getVersion());
+            }else{
+                getLogger().warning("Cannot hook to MythicMobs! You need update MythicMobs to 4.11+");
+            }
             metrics.addCustomChart(new SimplePie("mythicmobs_version", () -> {
                 return MythicMobs.inst().getVersion();
             }));
@@ -55,10 +63,10 @@ public class Main extends JavaPlugin implements Listener {
         getCommand("souls").setTabCompleter(new TabComplete());
         manager.registerEvents(new death(this), this);
         createConfigs();
-        if (getConfig().getInt("config-version") != 11) {
+        if (getConfig().getDouble("config-version") != 1.1) {
             getLogger().warning("Outdated config! Please backup & update config.yml file and restart server again!!");
         }
-        if (getlang().getInt("lang-version") != 4) {
+        if (getlang().getDouble("lang-version") != 0.4) {
             getLogger().warning("Outdated lang! Please backup & update lang.yml file and restart server again!!");
         }
 
@@ -175,6 +183,15 @@ public class Main extends JavaPlugin implements Listener {
         lang = YamlConfiguration.loadConfiguration(langFile);
         data = YamlConfiguration.loadConfiguration(dataFile);
         mob = YamlConfiguration.loadConfiguration(mobFile);
+    }
+
+    public void saveconfigs() {
+        try {
+            config.save(configFile);
+            lang.save(langFile);
+            mob.save(mobFile);
+        } catch (IOException ignored) {
+        }
     }
 
     public void save() {

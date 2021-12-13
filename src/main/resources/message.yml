@@ -61,4 +61,4 @@ Help-admin:
   - "&a/souls remove <player> <amount> &f- &7Remove souls"
   - "&a/souls set <player> <amount> &f- &7Set souls"
   - "&a/souls reload &f- &7Reload Config"
-lang-version: 4
+lang-version: 0.4
