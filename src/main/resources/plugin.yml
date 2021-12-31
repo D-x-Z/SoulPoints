@@ -1,5 +1,5 @@
-name: ${project.name}
-version: ${project.version}
+name: '${project.name}'
+version: '${project.version}-${devbuild.version}'
 main: net.danh.diemsinhmenh.Main
 softdepend: [ PlaceholderAPI, MythicMobs ]
 load: POSTWORLD

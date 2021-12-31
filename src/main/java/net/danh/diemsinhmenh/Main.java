@@ -40,11 +40,8 @@ public class Main extends JavaPlugin implements Listener {
         Metrics metrics = new Metrics(this, 12918);
         PluginManager manager = getServer().getPluginManager();
         if (manager.isPluginEnabled("MythicMobs")) {
-            if(MythicMobs.inst().getVersion().contains("5.0.0")
-                    || MythicMobs.inst().getVersion().contains("4.13.1")
-                    || MythicMobs.inst().getVersion().contains("4.13.0")
-                    || MythicMobs.inst().getVersion().contains("4.12.0")
-                    || MythicMobs.inst().getVersion().contains("4.11.0")){
+            if(MythicMobs.inst().getVersion().startsWith("4.1")
+                    || MythicMobs.inst().getVersion().startsWith("5")){
                 manager.registerEvents(new MythicMobsHook(this), this);
                 getLogger().log(Level.INFO, "Hooked onto MythicMobs v" + MythicMobs.inst().getVersion());
             }else{
