@@ -24,7 +24,6 @@ public class MythicMobsHook implements Listener {
     @EventHandler
     public void onkillmm(MythicMobDeathEvent mme) {
         if (main.getConfig().getBoolean("Mobs.Enable")) {
-            MythicEntity mmob = mme.getMobType().getMythicEntity();
             Player p = (Player) mme.getKiller();
             String mobname = mme.getMobType().getInternalName();
 
