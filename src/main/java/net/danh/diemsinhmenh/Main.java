@@ -2,33 +2,27 @@ package net.danh.diemsinhmenh;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 
 import io.lumine.xikage.mythicmobs.MythicMobs;
-import net.danh.diemsinhmenh.commands.TabComplete;
-import net.danh.diemsinhmenh.commands.commands;
+import net.danh.diemsinhmenh.commands.Commands;
+import net.danh.diemsinhmenh.commands.TabCommand;
 import net.danh.diemsinhmenh.event.UpdateChecker;
-import net.danh.diemsinhmenh.event.death;
+import net.danh.diemsinhmenh.event.Death;
 import net.danh.diemsinhmenh.hook.MythicMobsHook;
-import net.danh.diemsinhmenh.hook.placeholder;
+import net.danh.diemsinhmenh.hook.PlaceholderAPIHook;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.SimplePie;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.command.TabCompleter;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -53,12 +47,12 @@ public class Main extends JavaPlugin implements Listener {
         }
 
         if (manager.isPluginEnabled("PlaceholderAPI")) {
-            new placeholder(this).register();
+            new PlaceholderAPIHook(this).register();
             getLogger().log(Level.INFO, "Hooked onto PlaceholderAPI");
         }
-        getCommand("souls").setExecutor(new commands(this));
-        getCommand("souls").setTabCompleter(new TabComplete());
-        manager.registerEvents(new death(this), this);
+        getCommand("souls").setExecutor(new Commands(this));
+        getCommand("souls").setTabCompleter(new TabCommand());
+        manager.registerEvents(new Death(this), this);
         createConfigs();
         if (getConfig().getDouble("config-version") != 1.1) {
             getLogger().warning("Outdated config! Please backup & update config.yml file and restart server again!!");

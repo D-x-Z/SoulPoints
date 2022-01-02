@@ -6,18 +6,15 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
 
 
-public class commands implements CommandExecutor  {
+public class Commands implements CommandExecutor  {
 
 
     private Main main;
 
 
-    public commands(Main main) {
+    public Commands(Main main) {
         this.main = main;
     }
 

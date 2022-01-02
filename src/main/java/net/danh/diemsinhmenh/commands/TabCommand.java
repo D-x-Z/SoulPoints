@@ -3,11 +3,10 @@ package net.danh.diemsinhmenh.commands;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
-import org.bukkit.util.StringUtil;
 
 import java.util.*;
 
-public class TabComplete implements TabCompleter {
+public class TabCommand implements TabCompleter {
 
 
     List<String> arg = new ArrayList<String>();

@@ -2,14 +2,13 @@ package net.danh.diemsinhmenh.hook;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import net.danh.diemsinhmenh.Main;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
-public class placeholder extends PlaceholderExpansion {
+public class PlaceholderAPIHook extends PlaceholderExpansion {
 
     private final Main main;
 
-    public placeholder(Main main) {
+    public PlaceholderAPIHook(Main main) {
         this.main = main;
     }
 
