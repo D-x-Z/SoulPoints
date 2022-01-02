@@ -66,13 +66,12 @@ public class Main extends JavaPlugin implements Listener {
         if (getlang().getDouble("lang-version") != 0.4) {
             getLogger().warning("Outdated lang! Please backup & update lang.yml file and restart server again!!");
         }
-
         new UpdateChecker(this, 96396).getVersion(version -> {
             if (this.getDescription().getVersion().equals(version)) {
                 getLogger().info("There is not a new update available.");
             } else {
-                getLogger().info("There is a new update available.");
-                getLogger().info("Download: https://www.spigotmc.org/resources/96396/");
+                getLogger().warning("There's a new update! The new version is v" + version + ", you are using v" + getDescription().getVersion());
+                getLogger().warning("Download: https://www.spigotmc.org/resources/96396/");
             }
         });
         (new BukkitRunnable() {

@@ -16,6 +16,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.PluginManager;
@@ -211,4 +212,19 @@ public class death implements Listener {
         }
 
     }
+    @EventHandler
+    public void onjoin(PlayerJoinEvent e) {
+        Player p = e.getPlayer();
+        if (p.isOp() || p.hasPermission("souls.admin")) {
+            new UpdateChecker(main, 96396).getVersion(version -> {
+                if (main.getDescription().getVersion().equals(version)) {
+                } else {
+                    p.sendMessage(ChatColor.GREEN + "There's a new update! The new version is " + ChatColor.YELLOW + version + ChatColor.GREEN + ", you are using " + ChatColor.RED + main.getDescription().getVersion());
+                    p.sendMessage(ChatColor.BLUE + "Download: " + ChatColor.WHITE + "https://www.spigotmc.org/resources/96396/");
+                }
+
+            });
+        }
+    }
 }
+

@@ -14,7 +14,7 @@
     <description>Every time you die with souls, you will not lose items and if you run out of souls when you die, you will lose items</description>
     <properties>
         <java.version>1.8</java.version>
-        <devbuild.version>b1</devbuild.version>
+        <devbuild.version>b2</devbuild.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <build>
