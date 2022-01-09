@@ -95,6 +95,7 @@
             <artifactId>Mythicmobs</artifactId>
             <version>4.12.0</version>
             <scope>provided</scope>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.bstats</groupId>
