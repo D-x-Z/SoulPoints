@@ -12,7 +12,7 @@ MythicMobs:
     min: 1 #Set to 0 if you want disable all mobs mythicmobs not listed below give souls when dead
     max: 3 #Set to 0 if you want disable all mobs mythicmobs not listed below give souls when dead
     chance: 30 #Set to 0 if you want disable all mobs mythicmobs not listed below give souls when dead
-  Test: #Mythicmobs mobs name
+  Test: #Mythicmobs mobs internal name
     min: 1
     max: 2
     chance: 50 #50%
