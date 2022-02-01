@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -11,7 +11,9 @@
 
     <name>SoulPoints</name>
 
-    <description>Every time you die with souls, you will not lose items and if you run out of souls when you die, you will lose items</description>
+    <description>Every time you die with souls, you will not lose items and if you run out of souls when you die, you
+        will lose items
+    </description>
     <properties>
         <java.version>1.8</java.version>
         <devbuild.version>b2</devbuild.version>
@@ -91,9 +93,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>io.lumine.xikage</groupId>
-            <artifactId>Mythicmobs</artifactId>
-            <version>4.12.0</version>
+            <groupId>io.lumine</groupId>
+            <artifactId>Mythic-Dist</artifactId>
+            <version>5.0.0-SNAPSHOT</version>
             <scope>provided</scope>
             <type>jar</type>
         </dependency>

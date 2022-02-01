@@ -1,7 +1,6 @@
 package net.danh.diemsinhmenh.hook;
 
 import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMobDeathEvent;
-import io.lumine.xikage.mythicmobs.mobs.entities.MythicEntity;
 import net.danh.diemsinhmenh.Main;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,7 +9,6 @@ import org.bukkit.event.Listener;
 import java.util.Random;
 
 public class MythicMobsHook implements Listener {
-
 
 
     private Main main;
@@ -33,9 +31,9 @@ public class MythicMobsHook implements Listener {
             int max = main.getmob().getInt("MythicMobs.Default.max");
             int min = main.getmob().getInt("MythicMobs.Default.min");
             int chance = main.getmob().getInt("MythicMobs.Default.chance");
-            if (max == 0){
-                if (min == 0){
-                    if (chance == 0){
+            if (max == 0) {
+                if (min == 0) {
+                    if (chance == 0) {
                         return;
                     }
                 }

@@ -1,16 +1,10 @@
 package net.danh.diemsinhmenh;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.logging.Level;
-
 import io.lumine.xikage.mythicmobs.MythicMobs;
 import net.danh.diemsinhmenh.commands.Commands;
 import net.danh.diemsinhmenh.commands.TabCommand;
-import net.danh.diemsinhmenh.event.UpdateChecker;
 import net.danh.diemsinhmenh.event.Death;
+import net.danh.diemsinhmenh.event.UpdateChecker;
 import net.danh.diemsinhmenh.hook.MythicMobsHook;
 import net.danh.diemsinhmenh.hook.PlaceholderAPIHook;
 import net.md_5.bungee.api.ChatMessageType;
@@ -23,22 +17,31 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
+import java.util.logging.Level;
+
 public class Main extends JavaPlugin implements Listener {
+
+    private File configFile, langFile, dataFile, mobFile;
+    private FileConfiguration config, lang, data, mob;
 
     @Override
     public void onEnable() {
         Metrics metrics = new Metrics(this, 12918);
         PluginManager manager = getServer().getPluginManager();
         if (manager.isPluginEnabled("MythicMobs")) {
-            if(MythicMobs.inst().getVersion().startsWith("4.1")
-                    || MythicMobs.inst().getVersion().startsWith("5")){
+            if (MythicMobs.inst().getVersion().startsWith("4.1")
+                    || MythicMobs.inst().getVersion().startsWith("5")) {
                 manager.registerEvents(new MythicMobsHook(this), this);
                 getLogger().log(Level.INFO, "Hooked onto MythicMobs v" + MythicMobs.inst().getVersion());
-            }else{
+            } else {
                 getLogger().warning("Cannot hook to MythicMobs! You need update MythicMobs to 4.11+");
             }
             metrics.addCustomChart(new SimplePie("mythicmobs_version", () -> {
@@ -121,10 +124,6 @@ public class Main extends JavaPlugin implements Listener {
         this.getLogger().info("Saving data....");
         save();
     }
-
-    private File configFile, langFile, dataFile, mobFile;
-    private FileConfiguration config, lang, data, mob;
-
 
     public void createConfigs() {
         configFile = new File(getDataFolder(), "config.yml");

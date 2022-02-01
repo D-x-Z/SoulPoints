@@ -5,7 +5,10 @@ import io.lumine.xikage.mythicmobs.api.bukkit.BukkitAPIHelper;
 import net.danh.diemsinhmenh.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.*;
+import org.bukkit.entity.Animals;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Monster;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -22,6 +25,7 @@ import java.util.Random;
 
 public class Death implements Listener {
 
+    PluginManager manager = Bukkit.getServer().getPluginManager();
     private Main main;
 
 
@@ -29,14 +33,11 @@ public class Death implements Listener {
         this.main = main;
     }
 
-
     public int getRandomNumber(int min, int max) {
         Random r = new Random();
         int randomNumber = r.nextInt(max - min) + min;
         return randomNumber;
     }
-
-    PluginManager manager = Bukkit.getServer().getPluginManager();
 
     @EventHandler
     public void onKill(EntityDeathEvent e) {
@@ -53,8 +54,8 @@ public class Death implements Listener {
                     return;
                 }
             }
-            if (mob instanceof Animals){
-                if (!main.getConfig().getBoolean("Mobs.Animals")){
+            if (mob instanceof Animals) {
+                if (!main.getConfig().getBoolean("Mobs.Animals")) {
                     return;
                 }
             }
@@ -67,9 +68,9 @@ public class Death implements Listener {
             int max = main.getmob().getInt("Vanilla.Default.max");
             int min = main.getmob().getInt("Vanilla.Default.min");
             int chance = main.getmob().getInt("Vanilla.Default.chance");
-            if (max == 0){
-                if (min == 0){
-                    if (chance == 0){
+            if (max == 0) {
+                if (min == 0) {
+                    if (chance == 0) {
                         return;
                     }
                 }
@@ -204,6 +205,7 @@ public class Death implements Listener {
         }
 
     }
+
     @EventHandler
     public void onjoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
