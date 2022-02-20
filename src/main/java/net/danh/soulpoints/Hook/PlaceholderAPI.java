@@ -6,17 +6,11 @@ import net.danh.soulpoints.SoulPoints;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class PlaceholderAPIHook extends PlaceholderExpansion {
-
-    private final SoulPoints soulPoints;
-
-    public PlaceholderAPIHook(SoulPoints soulPoints) {
-        this.soulPoints = soulPoints;
-    }
+public class PlaceholderAPI extends PlaceholderExpansion {
 
     @Override
     public @NotNull String getAuthor() {
-        return soulPoints.getDescription().getAuthors().toString();
+        return SoulPoints.getInstance().getDescription().getAuthors().toString();
     }
 
     @Override
@@ -26,7 +20,7 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
 
     @Override
     public @NotNull String getVersion() {
-        return soulPoints.getDescription().getVersion();
+        return  SoulPoints.getInstance().getDescription().getVersion();
     }
 
 

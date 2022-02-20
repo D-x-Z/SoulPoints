@@ -8,7 +8,7 @@ import org.bukkit.event.Listener;
 
 import java.util.Random;
 
-public class MythicMobsHook implements Listener {
+public class MythicMobs implements Listener {
 
 
     @EventHandler

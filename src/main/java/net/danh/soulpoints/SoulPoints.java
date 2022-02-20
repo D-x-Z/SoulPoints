@@ -1,10 +1,9 @@
 package net.danh.soulpoints;
 
-import io.lumine.xikage.mythicmobs.MythicMobs;
 import net.danh.soulpoints.Commands.Commands;
 import net.danh.soulpoints.Commands.TabCommand;
-import net.danh.soulpoints.Hook.MythicMobsHook;
-import net.danh.soulpoints.Hook.PlaceholderAPIHook;
+import net.danh.soulpoints.Hook.MythicMobs;
+import net.danh.soulpoints.Hook.PlaceholderAPI;
 import net.danh.soulpoints.Manager.DeathEvent;
 import net.danh.soulpoints.Manager.Files;
 import net.danh.soulpoints.Manager.UpdateChecker;
@@ -35,18 +34,18 @@ public class SoulPoints extends JavaPlugin implements Listener {
         Metrics metrics = new Metrics(this, 12918);
         PluginManager manager = getServer().getPluginManager();
         if (manager.isPluginEnabled("MythicMobs")) {
-            if (MythicMobs.inst().getVersion().startsWith("4.1")
-                    || MythicMobs.inst().getVersion().startsWith("5")) {
-                manager.registerEvents(new MythicMobsHook(), this);
-                getLogger().log(Level.INFO, "Hooked onto MythicMobs v" + MythicMobs.inst().getVersion());
+            if (io.lumine.xikage.mythicmobs.MythicMobs.inst().getVersion().startsWith("4.1")
+                    || io.lumine.xikage.mythicmobs.MythicMobs.inst().getVersion().startsWith("5")) {
+                manager.registerEvents(new MythicMobs(), this);
+                getLogger().log(Level.INFO, "Hooked onto MythicMobs v" + io.lumine.xikage.mythicmobs.MythicMobs.inst().getVersion());
             } else {
                 getLogger().warning("Cannot hook to MythicMobs! You need update MythicMobs to 4.11+");
             }
-            metrics.addCustomChart(new SimplePie("mythicmobs_version", () -> MythicMobs.inst().getVersion()));
+            metrics.addCustomChart(new SimplePie("mythicmobs_version", () -> io.lumine.xikage.mythicmobs.MythicMobs.inst().getVersion()));
         }
 
         if (manager.isPluginEnabled("PlaceholderAPI")) {
-            new PlaceholderAPIHook(this).register();
+            new PlaceholderAPI().register();
             getLogger().log(Level.INFO, "Hooked onto PlaceholderAPI");
         }
         getCommand("souls").setExecutor(new Commands());

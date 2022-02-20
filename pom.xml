@@ -58,7 +58,7 @@
         </plugins>
         <resources>
             <resource>
-                <directory>src/soulPoints/resources</directory>
+                <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
