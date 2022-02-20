@@ -20,7 +20,7 @@ public class PlaceholderAPI extends PlaceholderExpansion {
 
     @Override
     public @NotNull String getVersion() {
-        return  SoulPoints.getInstance().getDescription().getVersion();
+        return SoulPoints.getInstance().getDescription().getVersion();
     }
 
 
