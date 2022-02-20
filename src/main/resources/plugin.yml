@@ -1,6 +1,6 @@
 name: '${project.name}'
-version: '${project.version}-${devbuild.version}'
-main: net.danh.diemsinhmenh.Main
+version: '${project.version} ${devbuild.version}'
+main: net.danh.soulpoints.SoulPoints
 softdepend: [ PlaceholderAPI, MythicMobs ]
 load: POSTWORLD
 authors: [ VoChiDanh ]

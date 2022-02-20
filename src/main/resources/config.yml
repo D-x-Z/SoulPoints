@@ -11,21 +11,21 @@ PVP:
   Chance: 100 #100%
 Mobs:
   Enable: true #You can config all mob (Vanilla/MythicMobs) in mobs.yml...
-  Animals: true #set false if you dont want get souls when kill animals
-  Monster: true #set false if you dont want get souls when kill monster
+  Animals: true #set false if you don't want to get souls when kill animals
+  Monster: true #set false if you don't want to get souls when kill monster
 ActionBar:
   Enable: true
 General:
   Maximum: 7 #Number of maximum souls you can regen
   Death: 1 #Number of souls you lose when die
   Daily: 1 #Number of souls you can regen / time
-  Regen-Time: 60 #60 maybe = 60s? i fogot it sorry, try it and see :0
+  Regen-Time: 60 #60 maybe = 60s? I forgot it sorry, try it and see :0
   Respawn: 3 #Number of souls you can receive when lost all souls and item in inventory
   Time: 3 #Time to send message when you die
   Normal: 5 #Number of souls you get when on first join or reset souls
   Protect-Inventory: 4 #when souls are lower than Protect-Inventory-souls, random items will be deleted when you die
   Minimum: 0 #When souls are less than or equal to Minimum, you will lose all your items when you die
-  #Want lose all inventory when die?
+  #Want to lose all inventory when you die?
   #If the protect inventory is less than the minimum, then when you die
   #with a number of souls greater than the minimum, you will be able to keep
   #the item in the inventory and if it is less than or equal to it, you will randomly drop an item.

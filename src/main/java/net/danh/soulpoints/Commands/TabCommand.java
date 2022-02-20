@@ -1,4 +1,4 @@
-package net.danh.diemsinhmenh.commands;
+package net.danh.soulpoints.Commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -10,7 +10,7 @@ import java.util.List;
 public class TabCommand implements TabCompleter {
 
 
-    List<String> arg = new ArrayList<String>();
+    List<String> arg = new ArrayList<>();
 
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
         if (arg.isEmpty()) {
@@ -24,7 +24,7 @@ public class TabCommand implements TabCompleter {
                 arg.add("updatefile");
             }
         }
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         if (args.length == 1) {
             for (String a : arg) {
                 if (a.toLowerCase().startsWith(args[0].toLowerCase()))

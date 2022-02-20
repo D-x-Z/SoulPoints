@@ -1,4 +1,4 @@
-package net.danh.diemsinhmenh.event;
+package net.danh.soulpoints.Manager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
