@@ -21,7 +21,7 @@ public class TabCommand implements TabCompleter {
                 arg.add("remove");
                 arg.add("reset");
                 arg.add("reload");
-                arg.add("updatefile");
+                arg.add("update");
             }
         }
         List<String> result = new ArrayList<>();

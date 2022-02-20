@@ -1,10 +1,8 @@
 config-version: 1.1
 prefix: "&f[&aSoulPoints&f] &b"
 language: enUs #you can create own language in lang.yml and change this to your own language
-available-worlds:
+disable-worlds:
   - world
-  - world_nether
-  - world_the_end
 PVP:
   Enable: true
   Kill: 1 #Number of souls you get when kill other player

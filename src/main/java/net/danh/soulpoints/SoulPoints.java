@@ -70,8 +70,8 @@ public class SoulPoints extends JavaPlugin implements Listener {
         (new BukkitRunnable() {
             public void run() {
                 for (Player p : Bukkit.getOnlinePlayers()) {
-                    List<String> w = getConfig().getStringList("available-worlds");
-                    if (w.contains(p.getWorld().getName())) {
+                    List<String> w = getConfig().getStringList("disable-worlds");
+                    if (!w.contains(p.getWorld().getName())) {
                         if (!Files.getdata().contains("Lives." + p.getUniqueId())) {
                             Files.addLives(p, getConfig().getInt("General.Normal"));
 
@@ -101,8 +101,8 @@ public class SoulPoints extends JavaPlugin implements Listener {
                         return;
                     }
 
-                    List<String> w = getConfig().getStringList("available-worlds");
-                    if (w.contains(p.getWorld().getName())) {
+                    List<String> w = getConfig().getStringList("disable-worlds");
+                    if (!w.contains(p.getWorld().getName())) {
                         Files.addLives(p, getConfig().getInt("General.Daily"));
                         p.sendMessage(Files.convert(getConfig().getString("prefix") + Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Soul-earn-message").replaceAll("%souls%", Files.getConfig().getString("General.Daily"))));
                     }

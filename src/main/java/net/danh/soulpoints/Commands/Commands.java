@@ -1,11 +1,23 @@
 package net.danh.soulpoints.Commands;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import net.danh.soulpoints.Manager.Files;
+import net.danh.soulpoints.SoulPoints;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.scheduler.BukkitRunnable;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 
 public class Commands implements CommandExecutor {
@@ -40,21 +52,57 @@ public class Commands implements CommandExecutor {
                     }
                 }
 
-                if (args[0].equalsIgnoreCase("updatefile")) {
+                if (args[0].equalsIgnoreCase("update")) {
 
                     if (!sender.hasPermission("souls.admin")) {
                         return true;
                     }
                     if (sender.hasPermission("souls.admin")) {
-                        if (Files.getConfig().getDouble("config-version") == 11 && Files.getlang().getDouble("lang-version") == 4) {
-                            Files.getConfig().set("config-version", 1.1);
-                            Files.getlang().set("lang-version", 0.4);
-                            Files.saveconfigs();
-                            Files.reloadConfigs();
-                            sender.sendMessage(ChatColor.GREEN + "Updated!");
-                        } else {
+                        try {
+                            String tagname;
+                            String version;
+                            String body;
+                            String name;
+                            URL api = new URL("https://api.github.com/repos/VoChiDanh/SoulPoints/releases/latest");
+                            URLConnection con = api.openConnection();
+                            con.setConnectTimeout(15000);
+                            con.setReadTimeout(15000);
 
-                            sender.sendMessage(ChatColor.YELLOW + "Your file is too old or has been updated and upgraded");
+                            JsonObject json = new JsonParser().parse(new InputStreamReader(con.getInputStream())).getAsJsonObject();
+                            tagname = json.get("tag_name").getAsString();
+                            version = SoulPoints.getInstance().getDescription().getVersion();
+                            body = json.get("body").getAsString();
+                            name = json.get("name").getAsString();
+
+                            String parsename = name.replaceAll("v", "");
+                            String parsebody = body.replaceAll("## Commits", "");
+                            if (!(parsename.equalsIgnoreCase(version))) {
+                                URL download = new URL("https://github.com/VoChiDanh/SoulPoints/releases/download/" + tagname + "/SoulPoints.jar");
+                                sender.sendMessage(Files.convert("&eDownloading " + name + "! &6Your version is &6v" + version));
+                                sender.sendMessage(Files.convert("&aUpdate log: " + parsebody));
+                                new BukkitRunnable() {
+
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            InputStream in = download.openStream();
+                                            File temp = new File("plugins/SoulPoints/update/");
+                                            if (!temp.exists()) {
+                                                temp.mkdir();
+                                            }
+                                            Path path = new File("plugins/SoulPoints/update/" + File.separator + "SoulPoints.jar").toPath();
+                                            java.nio.file.Files.copy(in, path, StandardCopyOption.REPLACE_EXISTING);
+                                            sender.sendMessage(Files.convert("&6Download finished, stop the server and check new jar in SoulPoints folder to get the new update"));
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                }.runTaskLaterAsynchronously(SoulPoints.getInstance(), 1);
+                            } else {
+                                sender.sendMessage(Files.convert("&aYou are on latest build"));
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
                         }
                     }
                 }
