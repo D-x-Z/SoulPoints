@@ -31,6 +31,7 @@ public class SoulPoints extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
+        instance = this;
         Metrics metrics = new Metrics(this, 12918);
         PluginManager manager = getServer().getPluginManager();
         if (manager.isPluginEnabled("MythicMobs")) {

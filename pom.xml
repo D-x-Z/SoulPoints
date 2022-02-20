@@ -16,7 +16,7 @@
     </description>
     <properties>
         <java.version>1.8</java.version>
-        <devbuild.version>Build 1</devbuild.version>
+        <devbuild.version>Build 2</devbuild.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <build>
