@@ -47,7 +47,7 @@ public class Commands implements CommandExecutor {
                     }
 
                     if (sender.hasPermission("souls.admin")) {
-                        Files.reloadConfigs();
+                        Files.reloadfiles();
                         sender.sendMessage(Files.convert(Files.getConfig().getString("prefix") + Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Reload")));
                     }
                 }

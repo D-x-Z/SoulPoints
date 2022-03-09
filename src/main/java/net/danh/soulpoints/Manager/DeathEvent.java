@@ -1,7 +1,6 @@
 package net.danh.soulpoints.Manager;
 
-import io.lumine.xikage.mythicmobs.MythicMobs;
-import io.lumine.xikage.mythicmobs.api.bukkit.BukkitAPIHelper;
+import io.lumine.mythic.bukkit.BukkitAPIHelper;
 import net.danh.soulpoints.SoulPoints;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -41,7 +40,7 @@ public class DeathEvent implements Listener {
                 return;
             }
             if (manager.isPluginEnabled("MythicMobs")) {
-                BukkitAPIHelper mythicMobsAPI = MythicMobs.inst().getAPIHelper();
+                BukkitAPIHelper mythicMobsAPI = new BukkitAPIHelper();
                 if (mythicMobsAPI.isMythicMob(mob)) {
                     return;
                 }

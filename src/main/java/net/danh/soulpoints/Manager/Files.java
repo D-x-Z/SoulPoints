@@ -56,14 +56,13 @@ public class Files {
         return mob;
     }
 
-    public static void reloadConfigs() {
+    public static void reloadfiles() {
         config = YamlConfiguration.loadConfiguration(configFile);
         lang = YamlConfiguration.loadConfiguration(langFile);
-        data = YamlConfiguration.loadConfiguration(dataFile);
         mob = YamlConfiguration.loadConfiguration(mobFile);
     }
 
-    public static void saveconfigs() {
+    public static void savefiles() {
         try {
             config.save(configFile);
             lang.save(langFile);

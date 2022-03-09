@@ -22,6 +22,6 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "v1.3.x"
           prerelease: false
-          title: "v1.3.7 Build 3"
+          title: "v1.3.7 Build 4"
           files: |
             ./target/SoulPoints.jar

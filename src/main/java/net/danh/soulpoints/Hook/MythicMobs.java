@@ -1,6 +1,6 @@
 package net.danh.soulpoints.Hook;
 
-import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMobDeathEvent;
+import io.lumine.mythic.bukkit.events.MythicMobDeathEvent;
 import net.danh.soulpoints.Manager.Files;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

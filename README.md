@@ -13,7 +13,6 @@ Every time you die with souls, you will not lose items and if you run out of sou
 ### Plugins Version
 
 ![version](https://img.shields.io/spiget/version/96396?label=SpigotMC%20Version) <br>
-![devversion](https://img.shields.io/static/v1?label=DevBuild%20Version&message=v1.3.7%20Build%201&color=yellow)
 
 ### Support Version
 

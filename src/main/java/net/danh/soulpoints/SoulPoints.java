@@ -1,5 +1,6 @@
 package net.danh.soulpoints;
 
+import io.lumine.mythic.bukkit.MythicBukkit;
 import net.danh.soulpoints.Commands.Commands;
 import net.danh.soulpoints.Commands.TabCommand;
 import net.danh.soulpoints.Hook.MythicMobs;
@@ -35,14 +36,13 @@ public class SoulPoints extends JavaPlugin implements Listener {
         Metrics metrics = new Metrics(this, 12918);
         PluginManager manager = getServer().getPluginManager();
         if (manager.isPluginEnabled("MythicMobs")) {
-            if (io.lumine.xikage.mythicmobs.MythicMobs.inst().getVersion().startsWith("4.1")
-                    || io.lumine.xikage.mythicmobs.MythicMobs.inst().getVersion().startsWith("5")) {
+            if (new MythicBukkit().getVersion().contains("5.0.1")) {
                 manager.registerEvents(new MythicMobs(), this);
-                getLogger().log(Level.INFO, "Hooked onto MythicMobs v" + io.lumine.xikage.mythicmobs.MythicMobs.inst().getVersion());
+                getLogger().log(Level.INFO, "Hooked onto MythicMobs v" + new MythicBukkit().getVersion());
             } else {
-                getLogger().warning("Cannot hook to MythicMobs! You need update MythicMobs to 4.11+");
+                getLogger().warning("Cannot hook to MythicMobs! You need update MythicMobs to 5.0.1-SNAPSHOT");
             }
-            metrics.addCustomChart(new SimplePie("mythicmobs_version", () -> io.lumine.xikage.mythicmobs.MythicMobs.inst().getVersion()));
+            metrics.addCustomChart(new SimplePie("mythicmobs_version", () -> new MythicBukkit().getVersion()));
         }
 
         if (manager.isPluginEnabled("PlaceholderAPI")) {
@@ -115,5 +115,6 @@ public class SoulPoints extends JavaPlugin implements Listener {
     public void onDisable() {
         this.getLogger().info("Saving data....");
         Files.save();
+        Files.savefiles();
     }
 }
