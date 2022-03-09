@@ -36,13 +36,9 @@ public class SoulPoints extends JavaPlugin implements Listener {
         Metrics metrics = new Metrics(this, 12918);
         PluginManager manager = getServer().getPluginManager();
         if (manager.isPluginEnabled("MythicMobs")) {
-            if (new MythicBukkit().getVersion().contains("5.0.1")) {
-                manager.registerEvents(new MythicMobs(), this);
-                getLogger().log(Level.INFO, "Hooked onto MythicMobs v" + new MythicBukkit().getVersion());
-            } else {
-                getLogger().warning("Cannot hook to MythicMobs! You need update MythicMobs to 5.0.1-SNAPSHOT");
-            }
-            metrics.addCustomChart(new SimplePie("mythicmobs_version", () -> new MythicBukkit().getVersion()));
+            manager.registerEvents(new MythicMobs(), this);
+            getLogger().log(Level.INFO, "Hooked onto MythicMobs v" + MythicBukkit.inst().getVersion());
+            metrics.addCustomChart(new SimplePie("mythicmobs_version", () -> MythicBukkit.inst().getVersion()));
         }
 
         if (manager.isPluginEnabled("PlaceholderAPI")) {
