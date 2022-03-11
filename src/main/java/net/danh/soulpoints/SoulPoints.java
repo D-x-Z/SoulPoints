@@ -1,5 +1,6 @@
 package net.danh.soulpoints;
 
+import io.lumine.mythic.bukkit.MythicBukkit;
 import net.danh.soulpoints.Commands.Commands;
 import net.danh.soulpoints.Commands.TabCommand;
 import net.danh.soulpoints.Hook.MythicMobs;
@@ -37,8 +38,8 @@ public class SoulPoints extends JavaPlugin implements Listener {
         PluginManager manager = getServer().getPluginManager();
         if (manager.isPluginEnabled("MythicMobs")) {
             manager.registerEvents(new MythicMobs(), this);
-            getLogger().log(Level.INFO, "Hooked onto MythicMobs v" + io.lumine.xikage.mythicmobs.MythicMobs.inst().getVersion());
-            metrics.addCustomChart(new SimplePie("mythicmobs_version", () -> io.lumine.xikage.mythicmobs.MythicMobs.inst().getVersion()));
+            getLogger().log(Level.INFO, "Hooked onto MythicMobs v" + MythicBukkit.inst().getVersion());
+            metrics.addCustomChart(new SimplePie("mythicmobs_version", () -> MythicBukkit.inst().getVersion()));
         }
 
         if (manager.isPluginEnabled("PlaceholderAPI")) {

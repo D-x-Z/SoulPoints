@@ -1,6 +1,6 @@
 package net.danh.soulpoints.Manager;
 
-import io.lumine.xikage.mythicmobs.api.bukkit.BukkitAPIHelper;
+import io.lumine.mythic.bukkit.BukkitAPIHelper;
 import net.danh.soulpoints.SoulPoints;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
