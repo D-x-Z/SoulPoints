@@ -1,11 +1,12 @@
 package net.danh.soulpoints.Hook;
 
-import io.lumine.mythic.bukkit.events.MythicMobDeathEvent;
+import io.lumine.xikage.mythicmobs.api.bukkit.events.MythicMobDeathEvent;
 import net.danh.soulpoints.Manager.Files;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class MythicMobs implements Listener {
@@ -31,7 +32,7 @@ public class MythicMobs implements Listener {
                 }
             }
             Random randomInt = new Random();
-            for (String getstring : Files.getmob().getConfigurationSection("MythicMobs.").getKeys(false)) {
+            for (String getstring : Objects.requireNonNull(Files.getmob().getConfigurationSection("MythicMobs.")).getKeys(false)) {
                 if (mobname.equalsIgnoreCase(getstring)) {
                     max = Files.getmob().getInt("MythicMobs." + mobname + ".max");
                     min = Files.getmob().getInt("MythicMobs." + mobname + ".min");
@@ -44,7 +45,7 @@ public class MythicMobs implements Listener {
             double chancee = Math.random() * 100.0D;
             if (chancee <= chance) {
                 Files.addLives(p, random);
-                p.sendMessage(Files.convert(Files.getConfig().getString("prefix") + Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Kill-mobs-message").replace("%souls%", Integer.toString(random)).replace("%mob%", mme.getEntity().getName())));
+                p.sendMessage(Files.convert(Files.getConfig().getString("prefix") + Objects.requireNonNull(Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Kill-mobs-message")).replace("%souls%", Integer.toString(random)).replace("%mob%", mme.getEntity().getName())));
             }
         }
     }

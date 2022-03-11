@@ -9,6 +9,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,12 +19,13 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.util.Objects;
 
 
 public class Commands implements CommandExecutor {
 
 
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (label.equalsIgnoreCase("souls")) {
             if (args.length == 0) {
                 if (!sender.hasPermission("souls.admin")) {
@@ -116,7 +118,7 @@ public class Commands implements CommandExecutor {
                         return true;
                     }
 
-                    sender.sendMessage(Files.convert(Files.getConfig().getString("prefix") + Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Check-message")).replaceAll("%souls%", String.valueOf(Files.getLives(Bukkit.getPlayer(args[1])))).replaceAll("%player%", Bukkit.getPlayer(args[1]).getName()));
+                    sender.sendMessage(Files.convert(Files.getConfig().getString("prefix") + Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Check-message")).replaceAll("%souls%", String.valueOf(Files.getLives(Objects.requireNonNull(Bukkit.getPlayer(args[1]))))).replaceAll("%player%", Objects.requireNonNull(Bukkit.getPlayer(args[1])).getName()));
                 }
             }
 
@@ -132,8 +134,8 @@ public class Commands implements CommandExecutor {
                             return true;
                         }
                         if (Bukkit.getPlayer(args[1]) != null) {
-                            Files.addLives(Bukkit.getPlayer(args[1]), Integer.parseInt(args[2]));
-                            sender.sendMessage(Files.convert(Files.getConfig().getString("prefix") + Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Add-message")).replaceAll("%souls%", String.valueOf(Integer.parseInt(args[2]))).replaceAll("%player%", Bukkit.getPlayer(args[1]).getName()));
+                            Files.addLives(Objects.requireNonNull(Bukkit.getPlayer(args[1])), Integer.parseInt(args[2]));
+                            sender.sendMessage(Files.convert(Files.getConfig().getString("prefix") + Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Add-message")).replaceAll("%souls%", String.valueOf(Integer.parseInt(args[2]))).replaceAll("%player%", Objects.requireNonNull(Bukkit.getPlayer(args[1])).getName()));
                         }
                     }
                 }
@@ -148,13 +150,13 @@ public class Commands implements CommandExecutor {
                             return true;
                         }
                         if (Bukkit.getPlayer(args[1]) != null) {
-                            if (Files.getLives(Bukkit.getPlayer(args[1])) < Integer.parseInt(args[2])) {
+                            if (Files.getLives(Objects.requireNonNull(Bukkit.getPlayer(args[1]))) < Integer.parseInt(args[2])) {
                                 sender.sendMessage(Files.convert(Files.getConfig().getString("prefix") + Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Enough")));
                                 return true;
                             }
-                            if (Files.getLives(Bukkit.getPlayer(args[1])) >= Integer.parseInt(args[2])) {
-                                Files.removeLives(Bukkit.getPlayer(args[1]), Integer.parseInt(args[2]));
-                                sender.sendMessage(Files.convert(Files.getConfig().getString("prefix") + Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Take-message")).replaceAll("%souls%", String.valueOf(Integer.parseInt(args[2]))).replaceAll("%player%", Bukkit.getPlayer(args[1]).getName()));
+                            if (Files.getLives(Objects.requireNonNull(Bukkit.getPlayer(args[1]))) >= Integer.parseInt(args[2])) {
+                                Files.removeLives(Objects.requireNonNull(Bukkit.getPlayer(args[1])), Integer.parseInt(args[2]));
+                                sender.sendMessage(Files.convert(Files.getConfig().getString("prefix") + Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Take-message")).replaceAll("%souls%", String.valueOf(Integer.parseInt(args[2]))).replaceAll("%player%", Objects.requireNonNull(Bukkit.getPlayer(args[1])).getName()));
                             }
                         }
                     }
@@ -169,8 +171,8 @@ public class Commands implements CommandExecutor {
                             return true;
                         }
                         if (Bukkit.getPlayer(args[1]) != null) {
-                            Files.setLives(Bukkit.getPlayer(args[1]), Integer.parseInt(args[2]));
-                            sender.sendMessage(Files.convert(Files.getConfig().getString("prefix") + Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Set-message")).replaceAll("%souls%", String.valueOf(Integer.parseInt(args[2]))).replaceAll("%player%", Bukkit.getPlayer(args[1]).getName()));
+                            Files.setLives(Objects.requireNonNull(Bukkit.getPlayer(args[1])), Integer.parseInt(args[2]));
+                            sender.sendMessage(Files.convert(Files.getConfig().getString("prefix") + Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Set-message")).replaceAll("%souls%", String.valueOf(Integer.parseInt(args[2]))).replaceAll("%player%", Objects.requireNonNull(Bukkit.getPlayer(args[1])).getName()));
                         }
                     }
                 }
@@ -185,8 +187,8 @@ public class Commands implements CommandExecutor {
                         }
 
                         if (Bukkit.getPlayer(args[1]) != null) {
-                            Files.resetLives(Bukkit.getPlayer(args[1]));
-                            sender.sendMessage(Files.convert(Files.getConfig().getString("prefix") + Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Reset-message")).replaceAll("%souls%", String.valueOf(Files.getConfig().getInt("General.Normal"))).replaceAll("%player%", Bukkit.getPlayer(args[1]).getName()));
+                            Files.resetLives(Objects.requireNonNull(Bukkit.getPlayer(args[1])));
+                            sender.sendMessage(Files.convert(Files.getConfig().getString("prefix") + Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Reset-message")).replaceAll("%souls%", String.valueOf(Files.getConfig().getInt("General.Normal"))).replaceAll("%player%", Objects.requireNonNull(Bukkit.getPlayer(args[1])).getName()));
                         }
                     }
                 }

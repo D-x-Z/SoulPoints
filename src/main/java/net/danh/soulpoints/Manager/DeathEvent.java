@@ -1,6 +1,6 @@
 package net.danh.soulpoints.Manager;
 
-import io.lumine.mythic.bukkit.BukkitAPIHelper;
+import io.lumine.xikage.mythicmobs.api.bukkit.BukkitAPIHelper;
 import net.danh.soulpoints.SoulPoints;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -19,6 +19,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class DeathEvent implements Listener {
@@ -66,7 +67,7 @@ public class DeathEvent implements Listener {
                     }
                 }
             }
-            for (String getEntityType : Files.getmob().getConfigurationSection("Vanilla.").getKeys(false)) {
+            for (String getEntityType : Objects.requireNonNull(Files.getmob().getConfigurationSection("Vanilla.")).getKeys(false)) {
                 if (vanillamobs.equalsIgnoreCase(getEntityType)) {
                     max = Files.getmob().getInt("Vanilla." + vanillamobs + ".max");
                     min = Files.getmob().getInt("Vanilla." + vanillamobs + ".min");
@@ -99,7 +100,7 @@ public class DeathEvent implements Listener {
                     double chance = Math.random() * 100.0D;
                     if (chance <= Files.getConfig().getInt("PvP.Chance")) {
                         Files.addLives(k, Files.getConfig().getInt("PVP.Kill"));
-                        k.sendMessage(Files.convert(Files.getConfig().getString("prefix") + Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Kill-message")).replace("%souls%", Files.getConfig().getString("PVP.Kill")).replace("%player%", p.getDisplayName()));
+                        k.sendMessage(Files.convert(Files.getConfig().getString("prefix") + Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Kill-message")).replace("%souls%", Objects.requireNonNull(Files.getConfig().getString("PVP.Kill"))).replace("%player%", p.getDisplayName()));
                         p.sendMessage(Files.convert(Files.getConfig().getString("prefix") + Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "PvP-death-message")).replace("%player%", k.getDisplayName()));
                     }
                 }

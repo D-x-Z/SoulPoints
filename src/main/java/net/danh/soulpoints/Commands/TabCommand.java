@@ -3,6 +3,7 @@ package net.danh.soulpoints.Commands;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ public class TabCommand implements TabCompleter {
 
     List<String> arg = new ArrayList<>();
 
-    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (arg.isEmpty()) {
             arg.add("check");
             if (sender.hasPermission("souls.admin")) {

@@ -1,6 +1,5 @@
 package net.danh.soulpoints;
 
-import io.lumine.mythic.bukkit.MythicBukkit;
 import net.danh.soulpoints.Commands.Commands;
 import net.danh.soulpoints.Commands.TabCommand;
 import net.danh.soulpoints.Hook.MythicMobs;
@@ -20,6 +19,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 
 public class SoulPoints extends JavaPlugin implements Listener {
@@ -37,16 +37,16 @@ public class SoulPoints extends JavaPlugin implements Listener {
         PluginManager manager = getServer().getPluginManager();
         if (manager.isPluginEnabled("MythicMobs")) {
             manager.registerEvents(new MythicMobs(), this);
-            getLogger().log(Level.INFO, "Hooked onto MythicMobs v" + MythicBukkit.inst().getVersion());
-            metrics.addCustomChart(new SimplePie("mythicmobs_version", () -> MythicBukkit.inst().getVersion()));
+            getLogger().log(Level.INFO, "Hooked onto MythicMobs v" + io.lumine.xikage.mythicmobs.MythicMobs.inst().getVersion());
+            metrics.addCustomChart(new SimplePie("mythicmobs_version", () -> io.lumine.xikage.mythicmobs.MythicMobs.inst().getVersion()));
         }
 
         if (manager.isPluginEnabled("PlaceholderAPI")) {
             new PlaceholderAPI().register();
             getLogger().log(Level.INFO, "Hooked onto PlaceholderAPI");
         }
-        getCommand("souls").setExecutor(new Commands());
-        getCommand("souls").setTabCompleter(new TabCommand());
+        Objects.requireNonNull(getCommand("souls")).setExecutor(new Commands());
+        Objects.requireNonNull(getCommand("souls")).setTabCompleter(new TabCommand());
         manager.registerEvents(new DeathEvent(), this);
         Files.createConfigs();
         if (getConfig().getDouble("config-version") != 1.1) {
@@ -79,7 +79,7 @@ public class SoulPoints extends JavaPlugin implements Listener {
                         if (getConfig().getBoolean("ActionBar.Enable")) {
                             p.spigot().sendMessage(
                                     ChatMessageType.ACTION_BAR,
-                                    new TextComponent(Files.convert(Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Soul-message")).replaceAll("%souls%", String.valueOf(Files.getLives(p)))));
+                                    new TextComponent(Files.convert(Objects.requireNonNull(Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Soul-message"))).replaceAll("%souls%", String.valueOf(Files.getLives(p)))));
                         }
                     }
 
@@ -100,7 +100,7 @@ public class SoulPoints extends JavaPlugin implements Listener {
                     List<String> w = getConfig().getStringList("disable-worlds");
                     if (!w.contains(p.getWorld().getName())) {
                         Files.addLives(p, getConfig().getInt("General.Daily"));
-                        p.sendMessage(Files.convert(getConfig().getString("prefix") + Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Soul-earn-message").replaceAll("%souls%", Files.getConfig().getString("General.Daily"))));
+                        p.sendMessage(Files.convert(getConfig().getString("prefix") + Objects.requireNonNull(Files.getlang().getString("lang." + Files.getConfig().getString("language") + "." + "Soul-earn-message")).replaceAll("%souls%", Objects.requireNonNull(Files.getConfig().getString("General.Daily")))));
                     }
                 }
             }
