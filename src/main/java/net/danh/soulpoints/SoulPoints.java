@@ -1,6 +1,5 @@
 package net.danh.soulpoints;
 
-import io.lumine.mythic.bukkit.MythicBukkit;
 import net.danh.soulpoints.Commands.Commands;
 import net.danh.soulpoints.Commands.TabCommand;
 import net.danh.soulpoints.Hook.MythicMobs;
@@ -37,11 +36,15 @@ public class SoulPoints extends JavaPlugin implements Listener {
         Metrics metrics = new Metrics(this, 12918);
         PluginManager manager = getServer().getPluginManager();
         if (manager.isPluginEnabled("MythicMobs")) {
-            manager.registerEvents(new MythicMobs(), this);
-            getLogger().log(Level.INFO, "Hooked onto MythicMobs v" + MythicBukkit.inst().getVersion());
-            metrics.addCustomChart(new SimplePie("mythicmobs_version", () -> MythicBukkit.inst().getVersion()));
+            if (!Objects.requireNonNull(getServer().getPluginManager().getPlugin("MythicMobs")).getDescription().getVersion().contains("5.0.0")
+            || !Objects.requireNonNull(getServer().getPluginManager().getPlugin("MythicMobs")).getDescription().getVersion().startsWith("4.")) {
+                manager.registerEvents(new MythicMobs(), this);
+                getLogger().log(Level.INFO, "Hooked onto MythicMobs v" + Objects.requireNonNull(getServer().getPluginManager().getPlugin("MythicMobs")).getDescription().getVersion());
+                metrics.addCustomChart(new SimplePie("mythicmobs_version", () -> Objects.requireNonNull(getServer().getPluginManager().getPlugin("MythicMobs")).getDescription().getVersion()));
+            } else {
+                getLogger().log(Level.SEVERE, "You need MythicMobs 5.0.1+ to enable MythicHook");
+            }
         }
-
         if (manager.isPluginEnabled("PlaceholderAPI")) {
             new PlaceholderAPI().register();
             getLogger().log(Level.INFO, "Hooked onto PlaceholderAPI");
