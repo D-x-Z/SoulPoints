@@ -1,0 +1,12 @@
+name: '${project.parent.name}'
+version: '${project.parent.version}'
+main: net.danh.soulpoints.SoulPoints
+softdepend: [ PlaceholderAPI, MythicMobs ]
+authors: [ VoChiDanh ]
+website: https://github.com/VoChiDanh/SoulPoints/wiki
+api-version: 1.13
+description: ${project.parent.description}
+commands:
+  souls:
+    description: Help Command
+    usage: /<Commands> <add|remove|check|set|reset|reload> <player> <number>
